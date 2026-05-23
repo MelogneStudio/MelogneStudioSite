@@ -669,6 +669,69 @@
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+  
+  /* Custom dropdown styles (TrackMLN & VaultMLN) */
+  .custom-select {
+    position: relative;
+    width: 100%;
+    font-family: 'Cascadia Code', monospace;
+    margin-bottom: 20px;
+  }
+
+  .select-trigger {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 13px;
+  }
+
+  .select-trigger:hover { border-color: rgba(120,255,120,0.2); }
+
+  .select-arrow {
+    width: 16px;
+    height: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.5;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .select-arrow svg { width: 100%; height: 100%; }
+
+  .custom-select.open .select-arrow {
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+
+  .select-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0; width: 100%;
+    background: #101510;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0; visibility: hidden; transform: translateY(-5px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    z-index: 999;
+  }
+
+  .custom-select.open .select-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+  .select-option { padding: 12px 14px; cursor: pointer; transition: background 0.15s; color: var(--text); }
+  .select-option:hover { background: rgba(255,255,255,0.05); }
+  .select-option.selected { background: rgba(120,255,120,0.08); }
 </style>
 </head>
 <body>
@@ -706,8 +769,8 @@
             <div class="card-divider"></div>
             <p class="app-desc">Lightweight screen-time tracker for Windows. Tracks app usage, session snapshots, and daily stats — built with Tauri 2, React, Rust, and SQLite.</p>
             <div class="app-tags">
-              <span class="tag highlight">Tauri 2</span>
-              <span class="tag highlight">Rust</span>
+              <span class="tag">Tauri 2</span>
+              <span class="tag">Rust</span>
               <span class="tag">React</span>
               <span class="tag">SQLite</span>
               <span class="tag">Windows</span>
@@ -718,11 +781,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download
             </button>
-            <a class="btn" href="#" target="_blank">
+            <a class="btn" href="https://github.com/MelogneStudio/TrackMLN" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
               GitHub
             </a>
-            <a class="btn" href="#" target="_blank">
+            <a class="btn" href="https://github.com/MelogneStudio/TrackMLN/releases" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               Releases
             </a>
@@ -766,11 +829,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Download
             </button>
-            <a class="btn" href="#" target="_blank">
+            <a class="btn" href="https://github.com/MelogneStudio/VaultMLN" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
               GitHub
             </a>
-            <a class="btn" href="#" target="_blank">
+            <a class="btn" href="https://github.com/MelogneStudio/VaultMLN/releases" target="_blank">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               Releases
             </a>
@@ -927,11 +990,23 @@
       </div>
     </div>
     <div class="modal-label">Select version</div>
-    <select class="modal-select" id="trackmln-version-select">
-      <option value="v1.1">v1.1</option>
-      <option value="v1.0">v1.0</option>
-    </select>
-    <a href="#" class="btn-download-modal">
+    <div class="custom-select" id="trackmlnVersionSelect">
+      <button class="select-trigger" type="button">
+        <span class="select-value">1.2.0</span>
+        <span class="select-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </span>
+      </button>
+      <div class="select-menu">
+        <div class="select-option selected" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.0/trackmln-installer-v1.2.0.exe">1.2.0</div>
+        <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.1.0/trackmln-installer-v1.1.0.exe">1.1.0</div>
+        <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.0.1/trackmln-installer-v1.0.1.exe">1.0.1</div>
+        <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.0.0/trackmln-installer-v1.0.0.exe">1.0.0</div>
+      </div>
+    </div>
+    <a id="trackmln-download-link" href="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.0/trackmln-installer-v1.2.0.exe" class="btn-download-modal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download
     </a>
@@ -952,11 +1027,21 @@
       <button class="modal-close" onclick="closeModal('modal-vault')">✕</button>
     </div>
     <div class="modal-label">Select version</div>
-    <select class="modal-select" id="vault-version-select">
-      <option value="v1.1">v1.1</option>
-      <option value="v1.0">v1.0</option>
-    </select>
-    <a href="#" class="btn-download-modal">
+    <div class="custom-select" id="vaultVersionSelect">
+      <button class="select-trigger" type="button">
+        <span class="select-value">1.1</span>
+        <span class="select-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </span>
+      </button>
+      <div class="select-menu">
+        <div class="select-option" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.0/VaultMLN.exe">1.0</div>
+        <div class="select-option selected" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.1/VaultMLN.exe">1.1</div>
+      </div>
+    </div>
+    <a id="vault-download-link" href="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.1/VaultMLN.exe" class="btn-download-modal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download
     </a>
@@ -1078,6 +1163,46 @@ document.addEventListener('DOMContentLoaded', () => {
   set('vaultmln-ss','assets/screenshots/vaultmln.png');
   ['trackmln-icon','modal-trackmln-icon'].forEach(id => { const el = document.getElementById(id); if (el && typeof TRACKMLN_SVG !== 'undefined') el.innerHTML = TRACKMLN_SVG; });
   ['vaultmln-icon','modal-vault-icon'].forEach(id => { const el = document.getElementById(id); if (el && typeof VAULTMLN_SVG !== 'undefined') el.innerHTML = VAULTMLN_SVG; });
+});
+
+// Custom select initialization for TrackMLN and VaultMLN
+function setupCustomSelect(rootId, downloadLinkId) {
+  const root = document.getElementById(rootId);
+  if (!root) return;
+  const trigger = root.querySelector('.select-trigger');
+  const menu = root.querySelector('.select-menu');
+  const valueSpan = root.querySelector('.select-value');
+  const options = Array.from(root.querySelectorAll('.select-option'));
+  const downloadLink = document.getElementById(downloadLinkId);
+
+  trigger.addEventListener('click', e => { e.stopPropagation(); root.classList.toggle('open'); });
+
+  options.forEach(opt => {
+    opt.addEventListener('click', () => {
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      const val = opt.getAttribute('data-value');
+      valueSpan.textContent = opt.textContent.trim();
+      if (downloadLink && val) downloadLink.href = val;
+      root.classList.remove('open');
+    });
+  });
+
+  // close on outside click
+  document.addEventListener('click', e => { if (!root.contains(e.target)) root.classList.remove('open'); });
+
+  // initialize from selected option
+  const selected = root.querySelector('.select-option.selected') || options[0];
+  if (selected) {
+    valueSpan.textContent = selected.textContent.trim();
+    const val = selected.getAttribute('data-value');
+    if (downloadLink && val) downloadLink.href = val;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupCustomSelect('trackmlnVersionSelect','trackmln-download-link');
+  setupCustomSelect('vaultVersionSelect','vault-download-link');
 });
 </script>
 </body>
