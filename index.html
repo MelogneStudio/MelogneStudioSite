@@ -111,7 +111,7 @@
                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                     Discontinued
                   </div>
-                  <div class="app-version">latest: v1.1</div>
+                  <div class="app-version">latest: v2.0</div>
                 </div>
               </div>
             </div>
@@ -298,19 +298,20 @@
     <div class="modal-label">Select version</div>
     <div class="custom-select" id="trackmlnVersionSelect">
       <button class="select-trigger" type="button">
-        <span class="select-value">1.2.0</span>
+        <span class="select-value">1.2.1</span>
         <span class="select-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </span>
       </button>
       <div class="select-menu">
-        <div class="select-option selected" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.0/trackmln-installer-v1.2.0.exe">1.2.0</div>
+        <div class="select-option selected" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.1/trackmln-installer-v1.2.1.exe">1.2.1</div>
+        <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.0/trackmln-installer-v1.2.0.exe">1.2.0</div>
         <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.1.0/trackmln-installer-v1.1.0.exe">1.1.0</div>
         <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.0.1/trackmln-installer-v1.0.1.exe">1.0.1</div>
         <div class="select-option" data-value="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.0.0/trackmln-installer-v1.0.0.exe">1.0.0</div>
       </div>
     </div>
-    <a id="trackmln-download-link" href="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.0/trackmln-installer-v1.2.0.exe" class="btn-download-modal">
+    <a id="trackmln-download-link" href="https://github.com/MelogneStudio/TrackMLN/releases/download/v1.2.1/trackmln-installer-v1.2.1.exe" class="btn-download-modal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download
     </a>
@@ -335,17 +336,18 @@
     <div class="modal-label">Select version</div>
     <div class="custom-select" id="vaultVersionSelect">
       <button class="select-trigger" type="button">
-        <span class="select-value">1.1</span>
+        <span class="select-value">2.0</span>
         <span class="select-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </span>
       </button>
       <div class="select-menu">
         <div class="select-option" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.0/VaultMLN.exe">1.0</div>
-        <div class="select-option selected" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.1/VaultMLN.exe">1.1</div>
+        <div class="select-option" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.1/VaultMLN.exe">1.1</div>
+        <div class="select-option selected" data-value="https://github.com/MelogneStudio/VaultMLN/releases/download/v2.0/VaultMLN.exe">2.0</div>
       </div>
     </div>
-    <a id="vault-download-link" href="https://github.com/MelogneStudio/VaultMLN/releases/download/v1.1/VaultMLN.exe" class="btn-download-modal">
+    <a id="vault-download-link" href="https://github.com/MelogneStudio/VaultMLN/releases/download/v2.0/VaultMLN.exe" class="btn-download-modal">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download
     </a>
@@ -383,6 +385,22 @@
           <li>Customisable UI</li>
         </ul>
       </div>
+      <div class="screenshots-section">
+        <div class="screenie-label">// Screenshots</div>
+        <div class="screenie-carousel" id="screenie-trackmln">
+          <div class="screenie-track-wrap">
+            <div class="screenie-track"></div>
+          </div>
+          <button class="screenie-btn prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="screenie-btn next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="screenie-dots"></div>
+          <div class="screenie-thumbs"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -419,11 +437,119 @@
         <h3>// Notes</h3>
         <p>This project is no longer maintained regularly, do not expect updates. Although a few UI and UX updates may be released.</p>
       </div>
+      <div class="screenshots-section">
+        <div class="screenie-label">// Screenshots</div>
+        <div class="screenie-carousel" id="screenie-vault">
+          <div class="screenie-track-wrap">
+            <div class="screenie-track"></div>
+          </div>
+          <button class="screenie-btn prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="screenie-btn next" aria-label="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="screenie-dots"></div>
+          <div class="screenie-thumbs"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
+/* ============================================================
+   SCREENSHOT CONFIG
+   Add/remove filenames here whenever you add new screenshots.
+   Path: assets/project/<filename>
+============================================================ */
+const PROJECT_SCREENSHOTS = {
+  trackmln: [
+    'assets/project/trackmln/1.png',
+    'assets/project/trackmln/2.png',
+    'assets/project/trackmln/3.png',
+    'assets/project/trackmln/4.png',
+    'assets/project/trackmln/5.png'
+  ],
+  vault: [
+    'assets/project/vaultmln/1.png',
+    'assets/project/vaultmln/2.png',
+    'assets/project/vaultmln/3.png',
+    'assets/project/vaultmln/4.png',
+    'assets/project/vaultmln/5.png',
+    'assets/project/vaultmln/6.png',
+  ],
+};
+
+/* ============================================================
+   SCREENSHOT CAROUSEL
+============================================================ */
+function buildCarousel(carouselId, images) {
+  const root = document.getElementById(carouselId);
+  if (!root) return;
+
+  const track     = root.querySelector('.screenie-track');
+  const dotsWrap  = root.querySelector('.screenie-dots');
+  const thumbWrap = root.querySelector('.screenie-thumbs');
+  const prevBtn   = root.querySelector('.screenie-btn.prev');
+  const nextBtn   = root.querySelector('.screenie-btn.next');
+  const trackWrap = root.querySelector('.screenie-track-wrap');
+
+  if (!images || images.length === 0) {
+    track.innerHTML = '<div class="screenie-slide"><div class="screenie-empty">// no screenshots yet</div></div>';
+    prevBtn.style.display = nextBtn.style.display = 'none';
+    return;
+  }
+
+  let current = 0;
+
+  // Build slides
+  track.innerHTML = images.map(src =>
+    `<div class="screenie-slide"><img src="${src}" alt="screenshot" loading="lazy"/></div>`
+  ).join('');
+
+  // Build dots
+  dotsWrap.innerHTML = images.map((_, i) =>
+    `<div class="screenie-dot${i === 0 ? ' active' : ''}" data-i="${i}"></div>`
+  ).join('');
+
+  // Build thumbs
+  thumbWrap.innerHTML = images.map((src, i) =>
+    `<div class="screenie-thumb${i === 0 ? ' active' : ''}" data-i="${i}"><img src="${src}" alt="thumb" loading="lazy"/></div>`
+  ).join('');
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, images.length - 1));
+    track.style.transform = `translateX(-${current * 100}%)`;
+    root.querySelectorAll('.screenie-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    root.querySelectorAll('.screenie-thumb').forEach((t, i) => t.classList.toggle('active', i === current));
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === images.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  dotsWrap.addEventListener('click', e => {
+    const dot = e.target.closest('.screenie-dot');
+    if (dot) goTo(+dot.dataset.i);
+  });
+  thumbWrap.addEventListener('click', e => {
+    const thumb = e.target.closest('.screenie-thumb');
+    if (thumb) goTo(+thumb.dataset.i);
+  });
+
+  // Touch / swipe
+  let startX = 0;
+  trackWrap.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  trackWrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  goTo(0);
+}
+
 /* ============================================================
    PAGE NAVIGATION
 ============================================================ */
@@ -455,7 +581,6 @@ function closeModalIfBg(e, id) {
    DETAIL MODALS (card click)
 ============================================================ */
 function openDetailModal(app, e) {
-  // If the click came from a button or link inside the card, don't open detail
   if (e.target.closest('.btn, a, button')) return;
   document.getElementById('detail-modal-' + app).classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -538,6 +663,11 @@ function setupCustomSelect(rootId, downloadLinkId) {
 document.addEventListener('DOMContentLoaded', () => {
   setupCustomSelect('trackmlnVersionSelect', 'trackmln-download-link');
   setupCustomSelect('vaultVersionSelect', 'vault-download-link');
+
+  // Build carousels from config
+  Object.entries(PROJECT_SCREENSHOTS).forEach(([key, imgs]) => {
+    buildCarousel('screenie-' + key, imgs);
+  });
 });
 </script>
 </body>
