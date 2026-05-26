@@ -21,6 +21,7 @@
     <button class="nav-link active" id="nav-projects" onclick="showPage('projects')">Projects</button>
     <button class="nav-link" id="nav-github" onclick="showPage('github')">GitHub</button>
     <button class="nav-link" id="nav-about" onclick="showPage('about')">About</button>
+    <div class="nav-indicator" id="nav-indicator"></div>
     <button class="theme-toggle" id="themeToggle" title="Toggle light / dark">
       <!-- moon (shown in dark mode) -->
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -41,6 +42,8 @@
     </button>
   </div>
 </nav>
+
+<div id="page-viewport">
 
 <!-- ============================================================
   PROJECTS PAGE
@@ -273,6 +276,8 @@
     </div>
   </div>
 </div>
+
+</div><!-- /#page-viewport -->
 
 <!-- ============================================================
   DOWNLOAD MODAL: TrackMLN
@@ -551,16 +556,91 @@ function buildCarousel(carouselId, images) {
 }
 
 /* ============================================================
-   PAGE NAVIGATION
+   PAGE NAVIGATION — directional slide + indicator
 ============================================================ */
+const PAGE_ORDER = ['projects', 'github', 'about'];
+let currentPage = 'projects';
+
+function positionIndicator(btn) {
+  const indicator = document.getElementById('nav-indicator');
+  if (!btn || !indicator) return;
+  const navLinks = btn.closest('.nav-links');
+  const navRect  = navLinks.getBoundingClientRect();
+  const btnRect  = btn.getBoundingClientRect();
+  indicator.style.left  = (btnRect.left - navRect.left) + 'px';
+  indicator.style.width = btnRect.width + 'px';
+}
+
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  if (name === currentPage) return; // same page — do nothing
+
+  const fromIdx = PAGE_ORDER.indexOf(currentPage);
+  const toIdx   = PAGE_ORDER.indexOf(name);
+  const goRight = toIdx > fromIdx; // navigating forward → outgoing slides left, incoming from right
+
+  const outPage = document.getElementById('page-' + currentPage);
+  const inPage  = document.getElementById('page-' + name);
+
+  // Prep incoming page: position it off-screen in the correct direction
+  inPage.classList.remove('active', 'slide-out-left', 'slide-out-right');
+  inPage.style.transform = goRight ? 'translateX(60px)' : 'translateX(-60px)';
+  inPage.style.opacity   = '0';
+  inPage.style.position  = 'absolute';
+  inPage.style.pointerEvents = 'none';
+
+  // Force a reflow so the starting position is painted before transition begins
+  inPage.offsetHeight; // eslint-disable-line no-unused-expressions
+
+  // Slide out the current page
+  outPage.classList.remove('active');
+  outPage.classList.add(goRight ? 'slide-out-left' : 'slide-out-right');
+  outPage.style.transform = '';
+  outPage.style.opacity   = '';
+
+  // Slide in the new page
+  inPage.style.transition = 'transform 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.38s ease';
+  inPage.style.transform  = 'translateX(0)';
+  inPage.style.opacity    = '1';
+
+  // After transition, clean up so active page is back in normal flow
+  const cleanup = () => {
+    outPage.classList.remove('slide-out-left', 'slide-out-right');
+    outPage.style.transform = '';
+    outPage.style.opacity   = '';
+    outPage.style.position  = '';
+
+    inPage.classList.add('active');
+    inPage.style.transform  = '';
+    inPage.style.opacity    = '';
+    inPage.style.position   = '';
+    inPage.style.transition = '';
+    inPage.style.pointerEvents = '';
+  };
+  inPage.addEventListener('transitionend', cleanup, { once: true });
+
+  // Nav active state
   document.querySelectorAll('.nav-link[id]').forEach(l => l.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
   const btn = document.getElementById('nav-' + name);
-  if (btn) btn.classList.add('active');
+  if (btn) {
+    btn.classList.add('active');
+    positionIndicator(btn);
+  }
+
+  currentPage = name;
   window.scrollTo(0, 0);
 }
+
+// Init indicator position on load
+document.addEventListener('DOMContentLoaded', () => {
+  const activeBtn = document.getElementById('nav-projects');
+  // Small delay so layout is painted and btn has its rect
+  requestAnimationFrame(() => positionIndicator(activeBtn));
+});
+// Keep indicator in place on resize
+window.addEventListener('resize', () => {
+  const btn = document.getElementById('nav-' + currentPage);
+  if (btn) positionIndicator(btn);
+});
 
 /* ============================================================
    DOWNLOAD MODALS
